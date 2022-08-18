@@ -1,0 +1,19 @@
+body {
+    background-color: rgba(0, 255, 255, 0.24);
+}
+
+div{
+    position: absolute;
+    display: block;
+
+}
+button{
+    position: absolute;
+    top: 50px;
+    left: 100px;
+}
+.azul{
+    background-color: blue;
+    color: white;
+    padding: 5px;
+}
