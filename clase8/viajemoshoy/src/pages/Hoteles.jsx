@@ -1,9 +1,8 @@
-
-const Hoteles=()=>{
+const Hoteles=({hoteles})=>{
+    console.log(hoteles);
     return(
         <>
-       
-        <div>Hoteles</div>
+            <div>Hoteles</div>
         </>
     )
 }

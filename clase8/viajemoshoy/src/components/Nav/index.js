@@ -13,7 +13,7 @@ const Nav=()=>{
             <li className="nav-item"><Link className="nav-link text-dark" to="/ofertas">ofertas</Link></li>
             <li className="nav-item"><Link className="nav-link text-dark" to="/paquetes">paquetes</Link></li>
             <li className="nav-item"><Link className="nav-link text-dark" to="/traslados">traslados</Link></li>
-            <li className="nav-item"><Link className="nav-link text-dark" to="/aereos">aereos</Link></li>
+            <li className="nav-item"><Link className="nav-link text-dark" to="/aereo">aereos</Link></li>
         </ul>
             
         </nav>
