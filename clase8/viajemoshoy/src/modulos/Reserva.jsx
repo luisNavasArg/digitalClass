@@ -13,9 +13,17 @@ module.exports={
             servicios+=`<li>${element}</li>`
         })
         let img ="", tarifa="",total=0;
-        img="https://pruebagcd.herokuapp.com/"+a.ruta;
-        tarifa = obj.precio/obj.cantDias;
-        total=obj.precio;
+        
+        if(v==="hoteles"){
+            img="https://pruebagcd.herokuapp.com/"+a.ruta;
+            tarifa = obj.precio/obj.cantDias;
+            total=obj.precio;
+        }else if(v==="paquetes"){
+            img=a.src;
+            total=a.costo;
+            tarifa="Lo indicado en el paquete"
+        }
+        
         let btn=document.getElementById('btn');
         btn.style.opacity=1;
         document.querySelector("#contenedor").innerHTML=`
@@ -29,7 +37,7 @@ module.exports={
             </h3>
 
             <form class="row my-5 mr-0" action="#">
-                <table class="table>
+                <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">HUÉSPED</th>

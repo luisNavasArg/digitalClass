@@ -13,11 +13,12 @@ import Aereo from './pages/Aereo'
 import {useEffect, useState} from 'react'
 function App() {
   const [hoteles,setHoteles] = useState([]);
+  const [paquetes,setPaquetes] = useState([]);
   const [datos,setDatos]= useState(true);
+  const urlPaquetes = "https://pruebagcd.herokuapp.com/paquetes";
   const fecthHotels= async()=>{
     const urlHotels = "https://pruebagcd.herokuapp.com/hoteles";
     const response = await fetch(urlHotels);
-   
     const resJson = await response.json();
     // resJson.forEach(h=>console.log(h))
     if(resJson.length ==0){
@@ -27,8 +28,19 @@ function App() {
       setDatos(false)
     }
   } 
+  const fecthPaquetes= async()=>{
+    const response = await fetch(urlPaquetes);
+    const resJson = await response.json();
+    // resJson.forEach(h=>console.log(h))
+    if(resJson.length ==0){
+      console.log('No hay datos');
+    }else{
+      setPaquetes(resJson)
+    }
+  } 
   useEffect(()=>{
     fecthHotels();
+    fecthPaquetes();
   },[])
   return (
     <React.Fragment>
@@ -44,7 +56,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="hoteles" element={<Hoteles hoteles={hoteles} />} />
         <Route path="ofertas" element={<Ofertas />} />
-        <Route path="paquetes" element={<Paquetes />} />
+        <Route path="paquetes" element={<Paquetes paquetes={paquetes} />} />
         <Route path="traslados" element={<Traslados />} />
         <Route path="aereo" element={<Aereo />} />
     </Routes>
