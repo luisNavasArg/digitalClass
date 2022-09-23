@@ -21,7 +21,8 @@ module.exports={
         }else if(v==="paquetes"){
             img=a.src;
             total=a.costo;
-            tarifa="Lo indicado en el paquete"
+            tarifa="Lo indicado en el paquete";
+            a.direccion=''
         }
         
         let btn=document.getElementById('btn');

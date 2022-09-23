@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route} from "react-router-dom";
 import Footer from './components/Footer/index'
 import Home from './pages/Home'
 import Hoteles from './pages/Hoteles'
@@ -14,14 +14,16 @@ import {useEffect, useState} from 'react'
 function App() {
   const [hoteles,setHoteles] = useState([]);
   const [paquetes,setPaquetes] = useState([]);
+  const [ofertas,setOfertas] = useState([])
   const [datos,setDatos]= useState(true);
   const urlPaquetes = "https://pruebagcd.herokuapp.com/paquetes";
+  const urlOfertas = "https://pruebagcd.herokuapp.com/ofertas";
   const fecthHotels= async()=>{
     const urlHotels = "https://pruebagcd.herokuapp.com/hoteles";
     const response = await fetch(urlHotels);
     const resJson = await response.json();
     // resJson.forEach(h=>console.log(h))
-    if(resJson.length ==0){
+    if(resJson.length === 0){
       console.log('No hay datos');
     }else{
       setHoteles(resJson)
@@ -32,15 +34,26 @@ function App() {
     const response = await fetch(urlPaquetes);
     const resJson = await response.json();
     // resJson.forEach(h=>console.log(h))
-    if(resJson.length ==0){
+    if(resJson.length === 0){
       console.log('No hay datos');
     }else{
       setPaquetes(resJson)
     }
   } 
+  const fecthOfertas= async()=>{
+    const response = await fetch(urlOfertas);
+    const resJson = await response.json();
+    // resJson.forEach(h=>console.log(h))
+    if(resJson.length === 0){
+      console.log('No hay datos');
+    }else{
+      setOfertas(resJson)
+    }
+  } 
   useEffect(()=>{
     fecthHotels();
     fecthPaquetes();
+    fecthOfertas();
   },[])
   return (
     <React.Fragment>
@@ -55,7 +68,7 @@ function App() {
     <Routes>
         <Route path="/" element={<Home />} />
         <Route path="hoteles" element={<Hoteles hoteles={hoteles} />} />
-        <Route path="ofertas" element={<Ofertas />} />
+        <Route path="ofertas" element={<Ofertas ofertas={ofertas} />} />
         <Route path="paquetes" element={<Paquetes paquetes={paquetes} />} />
         <Route path="traslados" element={<Traslados />} />
         <Route path="aereo" element={<Aereo />} />
